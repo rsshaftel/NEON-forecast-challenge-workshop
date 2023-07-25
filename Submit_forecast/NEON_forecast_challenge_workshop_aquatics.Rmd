@@ -232,7 +232,7 @@ noaa_future_daily <- noaa_future |>
   mutate(air_temperature = air_temperature - 273.15) |> 
   select(datetime, site_id, air_temperature, parameter)
 
-noaa_future_daily
+noaa_future_daily %>% ungroup() %>% distinct(parameter)
 ```
 Now we have a timeseries of historic data and a 30 member ensemble forecast of future air temperatures
 
@@ -462,7 +462,7 @@ library(tsibble)   # package for dealing with time series data sets
 
 library(neon4cast) 
 
-# suppreses dplyr's summarise message
+# suppresses dplyr's summarise message
 options(dplyr.summarise.inform = FALSE)
 ```
 
